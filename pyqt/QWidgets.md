@@ -63,6 +63,11 @@ Non-window(child widget)：Qt中大多数控件作为子控件使用
 控件通常不设置默认拉伸系数。当控件在布局中时，根据他们的sizePolicy()，sizeHint()分配空间。**拉伸系数用于改变空间之间空间分配比例**。
 
 #### 特定布局的使用
+##### QGridLayout
+**网格布局**
+- addWidget() 添加控件方法提供额外参数
+`(arg__1, row, column, rowSpan, columnSpan[, alignment=Qt.Alignment()])`
+
 
 ### QMainWindow
 **提供主应用程序窗口。**
@@ -137,6 +142,9 @@ QAction可能包含图标（icon）、菜单文本（menu text）、快捷方式
   - insertRow():
 
 ### QLineWidget
+
+### QGroupBox
+**提供一个带有标题的分组框框架**
 
 ### QLabel
 **提供文本或者图片展示，不提供用户交互功能**
