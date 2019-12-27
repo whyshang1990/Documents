@@ -141,6 +141,25 @@ QAction可能包含图标（icon）、菜单文本（menu text）、快捷方式
 + slots
   - insertRow():
 
+### QTableView
+
+### QCalendarWidget
+**提供一个基于月的日历部件，供用户选择日期**
+
+#### 常用方法
+```
+selectedDate() # 返回当前选择日期(QDate)
+verticalHeader()/horizontalHeader() # 获取标题栏
+```
+
+#### QHeaderView
+**为视图提供标题行或者标题列**
+
+#### 常用方法
+```
+hide()/setVisibal(True/False) # 设置其可见模式
+```
+
 ### QLineWidget
 
 ### QGroupBox
