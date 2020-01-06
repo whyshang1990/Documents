@@ -44,3 +44,6 @@ var distributionUrl = process.env['CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL'] || 
 `ng generate service service/InMemoryData`
 - 新建组件
 `ng generate component heroes`
+
+
+https://blog.51cto.com/7308310/2072364
