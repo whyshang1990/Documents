@@ -38,6 +38,12 @@ var distributionUrl = process.env['CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL'] || 
 `ng version`
 - 创建项目
 `ng new /home/why/code/Projects/AND`
+- 打开开发服务器
+`ng serve --open`
+>ng serve 命令会构建本应用、启动开发服务器、监听源文件，并且当那些文件发生变化时重新构建本应用。  
+--open 标志会打开浏览器，并访问 http://localhost:4200/。
+- 添加NG-ZORRO库
+`ng add ng-zorro-antd`
 - 安装内存Web API包
 `npm install angular-in-memory-web-api --save`
 - 创建内存API service
