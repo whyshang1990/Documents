@@ -1,18 +1,22 @@
 # QtSql
 
-### QSqlDatabase
+## QSqlDatabase
+
 **连接一个数据库**
 构造函数
+
 ```python
 QSqlDatabase.addDatabase("数据库驱动类型")
 setDatabaseName() # sqlite3数据库只需要设置这个参数
 open() # 打开一个数据库
 ```
 
-### QSqlQueryModel
+## QSqlQueryModel
+
 **提供一个只读的数据库查询结果模型**
 可以用于为View类提供数据，例如：QTableView
-```
+
+```python
 # 创建Model/View
 self.table_view = QTableView()
 self.query_model = QSqlQueryModel(parent=self)

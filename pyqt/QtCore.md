@@ -1,14 +1,19 @@
 # QtCore
+
 ## 核心框架
+
 ### 信号与槽(Slot & Signal)
+
 特定事件发生时发出信号，即调用信号的`emit()`方法。
 可以将多个信号连接到一个槽，也可以将一个信号连接到另一个信号，这些信号将依次触发
 
 #### 信号(Signals)
+
 信号通常在初始化前定义`xxx=pyqtSignal()`,虽然可以由任意对象发出，
 但是，一般的只从定义信号的类或其子类发出。
 
 #### 槽(Slots)
+
 槽，是一个特殊函数，特殊的地方在于，Qt的信号可以连接槽。
 当一个与槽相连的信号被发射时，槽即被调用，运行这个函数。
 
@@ -24,11 +29,13 @@
     - 代理的信号用于告诉模型和视图编辑器的状态。  
 
 #### QAbstractItemModel(自定义模型需要实现的类)
+
 自定义模型至少需要实现QAbstractItemModel类中的以下5个抽象函数:
 `columnCout()、rowCount()、index()、parent()、data()`
 自定义模型的基本原理及步骤如下：
-1.  数据：实际数据可使用QList、数组、整型、或单独的一个类来保存，数据可存放在模型中，也可存放在文件等其他地方。
-2.  `columnCout()、rowCount()、index()、parent()`这4个函数用于共同设计模型的结构。
+
+1. 数据：实际数据可使用QList、数组、整型、或单独的一个类来保存，数据可存放在模型中，也可存放在文件等其他地方。
+2. `columnCout()、rowCount()、index()、parent()`这4个函数用于共同设计模型的结构。
     - `columnCout(),rowCount()`:返回结构的行数和列数
     - `parent()`：返回给定索引的父索引，如果该项没有父项，则返回无效的QModelIndex。     
 当所有节点都为顶级节点时(table, list)，他们的父索引可以设置为None。**对树形结构模型**，可以通过获取当前节点的父节点及其行号和列号，然后使用createIndex()创建该父节点的索引。
@@ -38,37 +45,53 @@
 data()函数会被视图类调用多次，视图每次都会向data传递一个不同的role(角色)参数值，然后视图根据data返回的值，设置该role的数据， 因此在设计data函数的返回值时，需要根据role的不同值返回不同的数据，以使视图正确的显示。
 
 ## 常用类
+
 ### Qt
+
 **包含Qt中使用的各种标识符，即常量**
+
 #### Qt.Orientation
+
 **指定对象的方向(orientation)**，例如：QTableView的标题
+
 - Qt.Horizontal(水平方向)
 - Qt.Vertial(竖直方向)
 
 #### Qt.DateFormat
+
 "默认的日期格式化样式"
+
 - Qt.TextDate 默认样式，"ddd MMM d yyyy"，“周五 12月 27 2019”
 - Qt.ISODate  ISO 8601样式: yyyy-MM-dd/yyyy-MM-ddTHH:mm:ss
 - Qt.ISODateWithMs  ISO 8601,包含毫秒的样式
 
 #### Qt.ItemDataRole
+
 **每个Item都有一组与之关联的角色(Role)，这些角色用于指示Item展示的样式**
+
 ##### 通用(general roles)
 
 ##### 外观和元数据(Roles describing appearance and meta data)
+
 - Qt.TextAlignmentRole：默认委托的文本对齐方式(参考：Qt.AlignmentFlag)
+
 ##### 辅助(Accessibility roles)
 
 ##### 用户(User roles)
 
 ### Qt.AlignmentFlag
+
 **用于描述对齐方式** 
 含水平和垂直标志，可以组合起来产生所需的效果。
+
 #### 水平标记(horizontal flags)
+
 Qt.AlignLeft
 Qt.AlignRight
 Qt.AlignHCenter
+
 #### 垂直标记(vertical flags)
+
 Qt.AlignTop
 Qt.AlignBottom
 Qt.AlignVCenter
@@ -76,15 +99,20 @@ Qt.AlignVCenter
 **Qt.AlignCenter**2维标记
 
 ### QRect
+
 **定义一个平面矩形，通过指定左上角位置和宽高**
+
 #### 构造函数
+
 ```python
 QRect(QPoint topleft,  QPoint bottomright)
 QRect(QPoint topleft, QSize size)
 QRect(QRect)
 QRect(left, top, width, height)
 ```
+
 #### 常用方法
+
 ```python
 # 获取宽高
 width()
@@ -92,8 +120,11 @@ height()
 ```
 
 ### QPoint
+
 **定义平面中的点，使用整数精度**
+
 #### 构造函数
+
 ``` python
 QPoint(QPoint)
 QPoint(xpos, ypos)
@@ -101,18 +132,23 @@ QPoint() # 构造一个空点，即QPoint(0, 0)
 ```
 
 ### QSize
+
 **定义二维对象的大小，使用整数精度**
+
 #### 构造函数
+
 ``` python
 QSize(QSize)
 QSize(w, h)
 ```
 
 ### QDate
+
 **表示特定日期**
 
 #### 常用方法
-```
+
+```python
 currentDate() # 获取当前日期
 toString() # 输出日期的格式化字符串
 ```

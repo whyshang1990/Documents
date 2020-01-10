@@ -1,23 +1,29 @@
 # Mint Linux常用记录
+
 ## 软件安装
+
 Software Manager能安装chromium
 
 ### git
-```
+
+```bash
 sudo add-apt-repository ppa:git-core/ppa
 sudo apt update
 sudo apt install git
 ```
 
 ### PyCharm
+
 添加“安装路径/bin”目录到PATH环境变量
-```
+
+```bash
 vim ~/.bashrc
 EXPORT PATH="xxx/bin:$PATH"
 source ~/.bashrc
 ```
 
 ## 字体安装
+
 ```bash
 # 将下载的字体解压放入
 cd ~/Downloads

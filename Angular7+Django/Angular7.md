@@ -1,47 +1,54 @@
 # Angular7
+
 ## 安装Angular7
+
 ### 安装node.js
-https://nodejs.org/en/ 下载安装包，解压到目录
+
+<https://nodejs.org/en/> 下载安装包，解压到目录
 配置环境变量  `export PATH=$PATH:xxxxx`
 修改源镜像
 `npm set registry https://registry.npm.taobao.org/`
+
 ### 使用npm全局安装Angular CLI:
+
 `npm install -g @angular/cli`
 
 ### 安装 ionic cordova
+
 `npm install -g cordova ionic`
 
-```
+```bash
 ionic start myApp tabs
 # 运行项目:
-$ cd myApp
-$ ionic serve
+cd myApp
+ionic serve
 # 打包
 ionic cordova platform add android
 # 检查安装环境
-$ ionic cordova build android --release
+ionic cordova build android --release
 
 /home/why/code/Projects/myApp/platforms/android/cordova/lib/builders/ProjectBuilder.js
 
 修改
 var distributionUrl = process.env['CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL'] || '../gradle-3.3-all.zip';
-
-
-
 ```
 
 ### 新建ionic4应用
+
 `ionic start myApp tabs`
 
 ### angular命令
+
 - 查看版本
 `ng version`
 - 创建项目
 `ng new /home/why/code/Projects/AND`
 - 打开开发服务器
 `ng serve --open`
+
 >ng serve 命令会构建本应用、启动开发服务器、监听源文件，并且当那些文件发生变化时重新构建本应用。  
---open 标志会打开浏览器，并访问 http://localhost:4200/。
+--open 标志会打开浏览器，并访问 <http://localhost:4200/>
+
 - 添加NG-ZORRO库
 `ng add ng-zorro-antd`
 - 安装内存Web API包
@@ -51,5 +58,4 @@ var distributionUrl = process.env['CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL'] || 
 - 新建组件
 `ng generate component heroes`
 
-
-https://blog.51cto.com/7308310/2072364
+<https://blog.51cto.com/7308310/2072364>
