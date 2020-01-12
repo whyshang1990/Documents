@@ -51,6 +51,7 @@ var distributionUrl = process.env['CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL'] || 
 
 - 添加NG-ZORRO库
 `ng add ng-zorro-antd`
+`npm install ng-zorro-antd`
 - 安装内存Web API包
 `npm install angular-in-memory-web-api --save`
 - 创建内存API service
@@ -59,3 +60,37 @@ var distributionUrl = process.env['CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL'] || 
 `ng generate component heroes`
 
 <https://blog.51cto.com/7308310/2072364>
+
+### NG-ZORRO
+
+#### icons
+
+- 静态引入icons，需要修改app.module.ts
+
+```typescript
+import { NZ_ICONS } from 'ng-zorro-antd/icon';
+import { IconDefinition } from '@ant-design/icons-angular';
+import { UserOutline } from '@ant-design/icons-angular/icons';
+
+const icons: IconDefinition[] = [ UserOutline ];
+registerLocaleData(en);
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    NgZorroAntdModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule
+  ],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US },
+    { provide: NZ_ICONS, useValue: icons }
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
