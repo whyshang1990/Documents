@@ -9,11 +9,27 @@
 `ssh-keygen -t rsa -C "GitHub邮箱"
 复制生成的id_rsa.pub文件内容
 
-### 配置命令行显示中文
+### 常用全局配置
 
-`git config --global core.quotepath false`
+```bash
+# 查看配置信息
+git config --list
+# 配置命令行显示中文
+git config --global core.quotepath false
+# 在windows系统配置是否自动转换换行符
+git config --global core.autocrlf false
+# 设置git的界面编码
+git config --global gui.encoding utf-8
+# 设置 commit log 提交时使用 utf-8 编码
+git config --global i18n.commitencoding utf-8
+git config --global i18n.logoutputencoding utf-8
+```
 
-## status
+## 常用场景
+
+***
+
+### status
 
 查看文件状态
 git中的文件状态总的来说有两种：未跟踪(**untracked**)和已跟踪,
@@ -26,7 +42,9 @@ git status
 git status -s
 ```
 
-## add
+***
+
+### add
 
 将文件从未跟踪状态(**untracked**)添加到暂存区(**staged**)
 
@@ -34,14 +52,14 @@ git status -s
 git add xxx
 ```
 
-## restore
+### restore
 
 ```
 # 将暂存区的文件取消暂存，即文件状态改变为未跟踪(untracked)
 git restore --staged xxx
 ```
 
-## commit
+### commit
 
 将暂存区文件提交，文件状态由暂存切换到未修改
 
@@ -52,30 +70,20 @@ git commit -m "xxxxx"
 git commit -a "xxx"
 ```
 
-## branch
+***
 
-### 显示
+### branch
 
 ```bash
 # 显示本地分支(所有远程|所有本地和远程)
 git branch [-r | -a]
-```
-
-### 创建
-
-```bash
 # 创建指定名称的分支
 git branch xxx
-```
-
-### 删除
-
-```bash
 # 删除本地分支
-git branch --delete xxx
+git branch --d xxx
 ```
 
-## checkout
+### checkout
 
 ```bash
 # 切换到指定分支
@@ -84,7 +92,16 @@ git checkout xxx
 git checkout -b xxx
 ```
 
-## log
+### merge
+
+```bash
+# 合并某name分支到当前分支
+git merge <name>
+```
+
+***
+
+### log
 
 ```bash
 # 选项
@@ -96,7 +113,17 @@ git checkout -b xxx
 git log [origin/develop, develop]
 ```
 
-## pull
+### diff
+
+比较当前本地和 Git 仓库，可用于简单修改后的仓库对比
+
+```bash
+
+```
+
+***
+
+### pull
 
 **git pull <远程主机名> <远程分支名>:<本地分支名>**
 
@@ -109,7 +136,7 @@ git pull origin develop
 git pull origin
 ```
 
-## push
+### push
 
 **一般形式git push <远程主机名> <本地分支名> <远程分支名>**
 
@@ -119,3 +146,10 @@ git push origin develop
 # 省略本地分支，表示提交当前分支
 git push origin
 ```
+
+## Git 临时保存工作区
+
+修复 bug 时，一般会通过创建新的 bug 分支进行修复，然后合并，最后删除。
+当手头的 dev 分支的工作没有完成时，先把工作现场用命令 git stash 保存一下，然后切换回 master 分支，
+创建一个新分支例如 bug-101 去修复 bug，然后将更改 merge 到 master 分支，
+再回到 dev 分支，用 git stash pop 恢复之前的工作现场。
