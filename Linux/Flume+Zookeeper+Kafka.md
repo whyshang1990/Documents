@@ -76,17 +76,30 @@ export PATH=$PATH:$KAFKA_HOME/bin
 ```
 
 启动kafka zookeeper
-`bin/zookeeper-server-start.sh -daemon config/zookeeper.properties`
+`nohup bin/zookeeper-server-start.sh -daemon config/zookeeper.properties &`
 
 1. 启动Kafka服务，使用 kafka-server-start.sh 启动 kafka 服务
-`bin/kafka-server-start.sh config/server.properties`
+`nohup bin/kafka-server-start.sh config/server.properties &`
 2. 使用 kafka-topics.sh 创建单分区单副本的 topic test
-`bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test`
+`bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic dota2_match`
 3. 查看 topic 列表
 `bin/kafka-topics.sh --list --zookeeper localhost:2181`
 4. 产生消息，创建消息生产者
-`bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test`
+`kafka-console-producer.sh --broker-list localhost:9092 --topic dota2_match`
 5. 消费消息，创建消息消费者
-`bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test`
+ `kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic dota2_match --from-beginning`
 6. 查看Topic消息
-`bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic test`
+`bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic dota2_match`
+
+
+steam --> http --> json --> kafka -- flink --> kafka --> flume --> mariadb
+
+
+事件引擎
+
+1. 初始化
+初始化 flink 环境
+初始化 从配置文件获取 kafka host，
+    从数据库获取 规则集，表名与topic映射关系
+
+2. 构建flink job
