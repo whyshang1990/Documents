@@ -73,6 +73,8 @@ flush privileges;
 ### 修改apt阿里源
 
 ```bash
+apt update
+apt upgrade
 vim  /etc/apt/source.list
 # 源文本
 deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse

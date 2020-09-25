@@ -53,6 +53,16 @@ docker container rm [container-id or container-name]
 docker inspect [image_name or container-id or container-name] | grep [property_name]
 ```
 
+## network 命令
+
+```bash
+# 展示network
+docker network ls
+# 创建一个网络
+docker network create --driver bridge --subnet=172.18.12.0/16 --gateway=172.18.1.1 mynet
+
+```
+
 ## 文件操作命令
 
 ### cp
@@ -118,9 +128,16 @@ docker stop 容器id　　停止容器
 ## docker创建container语句备份
 
 ```bash
+# 创建网桥
+docker network create --driver bridge --subnet=172.18.12.0/16 --gateway=172.18.1.1 mynet
+
+# 创建容器
+docker container run --name customapp --network mynet --ip 172.18.12.20 -p 11106:11106 -ti ubuntu-java11:1.0.0 bash
+
 # 创建ubuntu容器
 docker run --name customapp -p 11106:11106 -ti ubuntu bash
 
 # 创建mariadb数据库容器
 docker run --name maria_database -p 13306:3306 -e MYSQL_ROOT_PASSWORD=wuhaiyun -v e:/docker/maria_database -d mariadb
 ```
+docker run --name mariadb --network mynet --ip 172.18.12.30 -p 13306:3306 -e MYSQL_ROOT_PASSWORD=wuhaiyun -v /Users/why/code/docker -d mariadb

@@ -54,3 +54,31 @@ grant all on *.* to wuhaiyun@'%';
 -- 刷新权限
 flush privileges;
 ```
+
+## brew 安装mariadb
+可以使用mysql直接登陆
+初始化root账号及数据库各种设定
+`sudo mysql_secure_installation`
+
+```bash
+Enter current password for root (enter for none): <– 初次运行直接回车
+…
+Set root password? [Y/n] <– 是否设置root用户密码，建议设置，输入Y按回车
+…
+New password: <– 设置root用户的密码
+Re-enter new password: <– 再输入一次你设置的root的密码
+…
+Remove anonymous users? [Y/n] <– 是否删除匿名用户，建议删除，Y删除，n不删除
+…
+Disallow root login remotely? [Y/n] <– 是否禁止root远程登录，按需配置，Y禁止远程登录，n开启远程登录
+…
+Remove test database and access to it? [Y/n] <– 是否删除test数据库，Y删除、n留着
+…
+Reload privilege tables now? [Y/n]<– 是否重新加载权限表，建议重新加载，Y重新加载，n不重新加载
+…
+All done! If you’ve completed all of the above steps, your MariaDB
+installation should now be secure.
+Thanks for using MariaDB!
+```
+
+创建用户
